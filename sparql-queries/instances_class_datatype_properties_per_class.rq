@@ -1,0 +1,10 @@
+SELECT ?cls (COUNT(distinct ?subject) as ?count) (COUNT(distinct ?datatype_property) as ?dt)
+WHERE {
+
+    ?subject rdf:type ?cls .
+    ?datatype_property rdf:type owl:DatatypeProperty .
+    ?datatype_property rdfs:domain ?cls .
+
+    VALUES ?cls { input } 
+}
+GROUP BY ?cls

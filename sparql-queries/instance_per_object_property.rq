@@ -1,0 +1,10 @@
+SELECT ?subject_class ?object_property ?object_class ?subject ?object 
+WHERE {
+
+    ?subject ?object_property ?object .
+    ?object_property rdf:type owl:ObjectProperty .
+    ?object_property rdfs:domain ?subject_class .
+    ?object_property rdfs:range ?object_class .
+
+}
+

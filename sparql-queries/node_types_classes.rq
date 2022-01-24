@@ -1,0 +1,5 @@
+SELECT DISTINCT ?class_name
+WHERE {
+    ?class_name rdf:type owl:Class .
+    ?instance rdf:type ?class_name .
+} 

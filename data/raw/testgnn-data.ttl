@@ -1,0 +1,62 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix if-gnn: <http://www.testgnn.org/2022/if-gnn#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+
+if-gnn:Class1
+  a owl:Class ;
+.
+if-gnn:Class2
+  a owl:Class ;
+.
+
+if-gnn:isConnectedTo
+  a owl:ObjectProperty ;
+  rdfs:domain if-gnn:Class1 ;
+  rdfs:range if-gnn:Class2 ;
+.
+
+if-gnn:class1DataProperty
+  a owl:DatatypeProperty ;
+  rdfs:domain if-gnn:Class1 ;
+  rdfs:range xsd:string ;
+.
+
+if-gnn:class2DataProperty
+  a owl:DatatypeProperty ;
+  rdfs:domain if-gnn:Class2 ;
+  rdfs:range xsd:string ;
+.
+
+if-gnn:node_class1_1 a if-gnn:Class1 ;
+    if-gnn:isConnectedTo if-gnn:node_class2_1 ;
+    if-gnn:isConnectedTo if-gnn:node_class2_2 ;
+    if-gnn:isConnectedTo if-gnn:node_class2_3 ;
+    if-gnn:class1DataProperty "node1_feature_1"  .
+
+if-gnn:node_class1_2 a if-gnn:Class1 ;
+    if-gnn:isConnectedTo if-gnn:node_class2_4 ;
+    if-gnn:isConnectedTo if-gnn:node_class2_5 ;
+    if-gnn:isConnectedTo if-gnn:node_class2_6 ;
+    if-gnn:class1DataProperty "node1_feature_2"  .
+
+if-gnn:node_class2_1 a if-gnn:Class2 ;
+    if-gnn:class2DataProperty "node2_feature_1"  .
+
+if-gnn:node_class2_2 a if-gnn:Class2 ;
+    if-gnn:class2DataProperty "node2_feature_2"  .
+
+if-gnn:node_class2_3 a if-gnn:Class2 ;
+    if-gnn:class2DataProperty "node2_feature_3"  .
+
+if-gnn:node_class2_4 a if-gnn:Class2 ;
+    if-gnn:class2DataProperty "node2_feature_4"  .
+
+if-gnn:node_class2_5 a if-gnn:Class2 ;
+    if-gnn:class2DataProperty "node2_feature_5"  .
+
+if-gnn:node_class2_6 a if-gnn:Class2 ;
+    if-gnn:class2DataProperty "node2_feature_6"  .
