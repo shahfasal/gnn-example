@@ -35,8 +35,8 @@ class DatasetPyGRDF(InMemoryDataset):
             data[node_type].x = torch.randn(self.get_num_class_features(node_type))
 
         df_links_numbers = self.get_links_numbers()
-        node_dict = self.create_dict_nodes(df_links_numbers)
-        grouped_df = self.create_node_mapping(df_links_numbers, node_dict)
+        node_dict_src,node_dict_dst = self.create_dict_nodes(df_links_numbers)
+        grouped_df = self.create_node_mapping(df_links_numbers, node_dict_src,node_dict_dst)
         df_unique_key_list = self.get_list_keys(grouped_df)
         final_het_data = self.get_edge_index(df_unique_key_list, grouped_df, data) #create edge index
         print("final hetero data",final_het_data)
@@ -91,20 +91,24 @@ class DatasetPyGRDF(InMemoryDataset):
         """
         src_node = set(val for val in df['subject'])
         dst_node = set(val for val in df['object'])
-        nodes = sorted(list(src_node.union(dst_node)))
+        nodes_list_src = sorted(list(src_node))
+        nodes_list_dst = sorted(list(dst_node))
+
         
         #create dictionary for nodes
-        nodes_dict = {node: i for i, node in enumerate(nodes)}
-        return nodes_dict
+        nodes_dict_src = {node: i for i, node in enumerate(nodes_list_src)}
+        nodes_dict_dst = {node: i for i, node in enumerate(nodes_list_dst)}
 
-    def create_node_mapping(self, df, nodes_dict):
+        return nodes_dict_src,nodes_dict_dst
+
+    def create_node_mapping(self, df, nodes_dict_src, node_dict_dst):
         """
         :param df:
         :param nodes_dict:
         :return: grouped_df
         """
-        df['subject'] = df['subject'].map(nodes_dict)
-        df['object'] = df['object'].map(nodes_dict)
+        df['subject'] = df['subject'].map(nodes_dict_src)
+        df['object'] = df['object'].map(node_dict_dst)
         grouped_df = df.groupby(['subject_class', 'object_property', 'object_class'])
         return grouped_df
 

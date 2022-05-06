@@ -1,6 +1,5 @@
 from datasetPyGRDF import DatasetPyGRDF
 import torch
-from torch_geometric.datasets import MovieLens
 
 from torch.nn import Parameter
 import torch.nn.functional as F
@@ -20,12 +19,12 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 dataset = DatasetPyGRDF('data/')
 data = dataset[0].to(device)
-data['if-gnn:Class1'].x = torch.eye(data['if-gnn:Class1'].num_nodes, device=device)
-del data['if-gnn:Class1'].num_node
+# data['if-gnn:Class1'].x = torch.eye(data['if-gnn:Class1'].num_nodes, device=device)
+# del data['if-gnn:Class1'].num_node
 
 data = ToUndirected()(data)
 print("ToUndirected",data)
-del data['if-gnn:Class2', 'rev_:isConnectedTo', 'if-gnn:Class1'].edge_label
+# del data['if-gnn:Class2', 'rev_:isConnectedTo', 'if-gnn:Class1'].edge_label
 
 train_data, val_data, test_data =  T.RandomLinkSplit(
 num_val=0.05,
