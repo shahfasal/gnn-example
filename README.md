@@ -7,4 +7,4 @@ This example comprises the following files
 3) We execute the "model-test.py" file to generate the model on data created.    
 4) We have included requirements.txt file in order to check the libraries we are using
 
-Note there can be other ways to achieve this but this approach suits our setup
+Note there can be other ways to achieve this but this approach suits our setup. Also please note in discussion with pyg team maintainer has asked to install pytorch-geometric from master <pip install git+https://github.com/pyg-team/pytorch_geometric.git>
