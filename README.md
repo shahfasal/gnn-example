@@ -1,4 +1,4 @@
-# gnn-example
+# Custom knowledge graph gnn-example (pytorch based)
 This is minimal working example to load and train very basic model on the custom Knowledge Graph in pytorch-geometric.    
 It is based on top of the example provided in pytorch-geometric [hetero_link_pred](https://github.com/pyg-team/pytorch_geometric/blob/master/examples/hetero/hetero_link_pred.py) & a [discussion](https://github.com/pyg-team/pytorch_geometric/discussions/3221) with pytorch-geometric team.    
 This example comprises the following files    
